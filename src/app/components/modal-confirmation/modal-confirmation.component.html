@@ -1,0 +1,28 @@
+<button class="btn btn-warning " (click)="openModal()">Confirmacion</button>
+
+<div class="modal fade" #modalInfo tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+      <div class="modal-content" >
+     <div class="modal-body" >
+      <div class="row align-items-center justify-content-between">
+        <div class="col-9">
+          <h5 class="modal-title text-black" id="exampleModalLabel">Confirmacion de Monto</h5>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-6 text-black">
+            <p class="text-black">Cantidad: {{numberTotal ? numberTotal : 0}}</p>
+          </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-auto ms-5">
+            <button class="btn btn-success d-block" (click)="correcto()">Es correcto</button>
+          </div>
+          <div class="col-auto ">
+            <button class="btn btn-danger d-block" (click)="this.modalinfo.hide()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
