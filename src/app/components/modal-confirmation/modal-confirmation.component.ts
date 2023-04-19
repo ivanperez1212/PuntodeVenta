@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { OperacionesService } from 'src/app/servicio/operaciones.service';
 declare const bootstrap: any;
 @Component({
@@ -11,6 +11,8 @@ export class ModalConfirmationComponent {
   modalinfo:any;
   @Input('numberTotal')numberTotal?:number;
   @Input('product')product?:string = "";
+  @Output()emptyBox: EventEmitter<any> = new EventEmitter();
+  empty: boolean = false;
   constructor(private service:OperacionesService) {}
 
    ngOnInit(): void {
@@ -18,14 +20,17 @@ export class ModalConfirmationComponent {
    }
    openModal(){
     this.modalinfo.show();
-    console.log(this.numberTotal );
-    console.log(this.product)
   }
-
-  correcto(){
+  success(){
   this.service.calculate(this.numberTotal,this.product).subscribe((res:any) =>{
-    console.log(res)
-    this.modalinfo.hide()
+    this.empty = true;
+    this.emptyBox?.emit(this.empty)
+    this.modalinfo.hide();
   })
+ }
+ cancelOperation(){
+     this.empty =true;
+    this.emptyBox?.emit(this.empty)
+    this.modalinfo.hide();
  }
 }

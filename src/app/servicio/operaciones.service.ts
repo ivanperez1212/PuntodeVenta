@@ -1,14 +1,16 @@
-import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { EventEmitter, Injectable, Output } from '@angular/core';
+import { of, retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OperacionesService {
   total?:number = 0;
+
   constructor() { }
 
   calculate(numberTotal?:number, product?:string){
+    console.log(this.total)
     var idProduct = JSON.parse(localStorage.getItem("idProduct") || "[]");
     if(idProduct == null){
      idProduct = 1
@@ -43,7 +45,6 @@ export class OperacionesService {
        console.log("entre")
      break;
     }
- 
     var objProducts = {
      id : (idProduct > 1) ? idProduct : (tableProduct.length + 1),
      price : this.total,
@@ -51,7 +52,11 @@ export class OperacionesService {
    }
     tableProduct.push(objProducts);
     var list = localStorage.setItem("products",JSON.stringify(tableProduct));
-    console.log(list)
     return of(list)
+   }
+  
+   get(){
+    var tableProduct = JSON.parse(localStorage.getItem("products") || "[]");
+    return of(tableProduct)
    }
 }

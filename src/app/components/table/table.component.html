@@ -1,0 +1,23 @@
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th *ngIf="showTotal" scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of summaryDay">
+            <th scope="row">{{product.id}}</th>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>     
+          </tr>
+          <tr >
+            <th scope="row"></th>
+            <td></td>
+            <td></td> 
+            <td *ngIf="showTotal">{{ summaryDay | totalpipe }}</td>
+          </tr>
+        </tbody>
+      </table>
