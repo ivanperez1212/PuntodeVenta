@@ -1,0 +1,83 @@
+
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../../../assets/fonts/poppins/Poppins-Regular.ttf')  
+  }
+  @font-face {
+    font-family: Poppins-Medium;
+    src: url('../../../assets/fonts/poppins/Poppins-Medium.ttf'); 
+  }
+  @font-face {
+    font-family: Poppins-Bold;
+    src: url('../../../assets/fonts/poppins/Poppins-Bold.ttf'); 
+  }
+  @font-face {
+    font-family: Poppins-SemiBold;
+    src: url('../../../assets/fonts/poppins/Poppins-SemiBold.ttf'); 
+  } 
+    input {
+      outline: none;
+      border: none;
+  } 
+  button {
+      outline: none !important;
+      border: none;
+      background: transparent;
+  }
+  button:hover {
+      cursor: pointer;
+  }  
+
+  .custom-font {
+    font-family: Poppins-Bold;
+    color: #333333;
+    line-height: 1.2;
+  }
+
+
+    .wrap-input100 {
+      width: 100%;
+      position: relative;
+      border-bottom: 2px solid #d9d9d9;
+    }
+  
+  .label-input100 {
+    font-family: Poppins-Regular;
+    font-size: 14px;
+    color: #333333;
+    line-height: 1.5;
+    padding-left: 7px;
+  }
+  
+  .input100 {
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #333333;
+    line-height: 1.2;
+  
+    display: block;
+    width: 100%;
+    height: 55px;
+    background: transparent;
+    padding: 0 7px 0 43px;
+  }
+  
+  .input100:focus + .focus-input100::before {
+    width: 100%;
+  }
+  
+  .has-val.input100 + .focus-input100::before {
+    width: 100%;
+  }
+  
+  .input100:focus + .focus-input100::after {
+    color: #a64bf4;
+  }
+  
+  .has-val.input100 + .focus-input100::after {
+    color: #a64bf4;
+  }
+  
+ 
+
+

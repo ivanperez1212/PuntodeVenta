@@ -2,20 +2,20 @@
     <div class="col-3 col-md-6 align-items-center">
       <div class="card h-100" style="background-color:orangered;">
         <div class="card-body d-flex justify-content-center">
-         <app-button-product [productButton]= productButton></app-button-product>
+         <app-button-product [productButton]= productButton  (show)="showKeyboard($event)"></app-button-product>
         </div>
       </div>
     </div>
-    <div class="col-3 col-md-auto align-items-center">
+    <div class="col-3 col-md-auto align-items-center" *ngIf="show" >
       <div class="card h-100 bs-info-border-subtle"> 
         <div class="card-body d-flex justify-content-center">
-          <button type="button" class="btn btn-icon-only cursor-pointer" (click)="numberFirst()">
+          <button type="button" class="btn btn-icon-only cursor-pointer touch-action: manipulation" (click)="numberFirst()">
             <h6 class="text-black">1</h6>
           </button>
         </div>
       </div>
     </div>
-    <div class="col-3 col-md-auto align-items-center">
+    <div class="col-3 col-md-auto align-items-center" *ngIf="show">
       <div class="card h-100 bs-info-border-subtle">
         <div class="card-body d-flex justify-content-center">
           <button type="button" class="btn btn-icon-only cursor-pointer" (click)="numberSecond()">
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="col-3 col-md-auto align-items-center ">
+    <div class="col-3 col-md-auto align-items-center" *ngIf="show">
       <div class="card h-100 bs-info-border-subtle">
         <div class="card-body d-flex justify-content-center">
           <button type="button" class="btn btn-icon-only cursor-pointer" (click)="numberThird()">
@@ -35,8 +35,9 @@
     </div>
   </div>
 
-  <div class="row justify-content-between d-flex flex-wrap text-center mb-1">
-    <div class="col-3 col-md-6 align-items-center">
+  <div class="row justify-content-between d-flex flex-wrap text-center mb-1" *ngIf="show">
+    <div class="col-3 col-md-6 d-flex align-items-center">
+      <div class="border p-4 bg-white">M:{{numberTotal && price? numberTotal * price : 0}}</div>
     </div>
     <div class="col-3 col-md-auto align-items-center">
       <div class="card h-100 bs-info-border-subtle" >
@@ -67,8 +68,9 @@
     </div>
   </div>
 
-  <div class="row justify-content-between d-flex flex-wrap text-center mb-1">
+  <div class="row justify-content-between d-flex flex-wrap text-center mb-1" *ngIf="show">
     <div class="col-3 col-md-6 align-items-center">
+     
     </div>
     <div class="col-3 col-md-auto  align-items-center">
       <div class="card h-100 bs-info-border-subtle" >
@@ -99,7 +101,7 @@
     </div>
   </div>
 
-  <div class="row justify-content-between d-flex flex-wrap text-center mb-1 align-items-center">
+  <div class="row justify-content-between d-flex flex-wrap text-center mb-1 align-items-center" *ngIf="show">
     <div class="col-3 col-md-6"></div>
     <div class="col-3 col-md-3 align-items-center">
       <div class="card h-100 bs-info-border-subtle" >
@@ -111,6 +113,6 @@
       </div>
     </div>
     <div class="col-6 col-md-auto align-items-center">
-      <app-modal-confirmation (emptyBox)="onEmptyBox($event)" [numberTotal]="numberTotal" [product]="'chiken'" ></app-modal-confirmation>
+      <app-modal-confirmation (emptyBox)="onEmptyBox($event)" (totalNumberChange)="ontotalNumberChange($event)" [numberTotal]="numberTotal" [product]="productButton" [price]="price" ></app-modal-confirmation>
     </div>
   </div>

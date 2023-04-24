@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { OperacionesService } from 'src/app/servicio/operaciones.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  constructor(){}
+  listProduct: any;
+  constructor(private servicio:OperacionesService){}
  
   ngOnInit(): void {
-  }
+    this.servicio.getProduct().subscribe((res:any) =>{
+      console.log(res)
+      this.listProduct = res;
+    })
+  }   
 
 }

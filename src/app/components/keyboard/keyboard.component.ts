@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class KeyboardComponent {
   @Input('productButton')productButton:string = "";
+  @Input('price')price:number = 0;
   numberOne:any; 
   numberTwo:any;
   numberThree:any;
@@ -19,7 +20,10 @@ export class KeyboardComponent {
   numberCero:any;
   numberTotal:any;
   concatenatedNumber: any ="";
-  emptyBox = false;
+  emptyBox: boolean = false;
+  show: boolean = false;
+  totalChange: number = 0;
+
   constructor(){}
 
   numberFirst(){
@@ -27,55 +31,46 @@ export class KeyboardComponent {
     console.log(this.numberOne)
     this.totalChikenMetod();
    }
- 
    numberSecond(){
      this.numberTwo = 2;
      console.log(this.numberTwo)
      this.totalChikenMetod();
    }
- 
    numberThird(){
      this.numberThree = 3;
      console.log(this.numberThree)
      this.totalChikenMetod();
    }
- 
    numberFourth (){
      this.numberFour = 4;
      console.log(this.numberFour)
      this.totalChikenMetod();
    }
- 
    numberFiveth(){
      this.numberFive = 5;
      console.log(this.numberFive)
      this.totalChikenMetod();
    }
- 
    numberSixth(){
      this.numberSix = 6;
      console.log(this.numberSix)
      this.totalChikenMetod();
    }
-   
    numberSeventh(){
      this.numberSeven = 7;
      console.log(this.numberSeven)
      this.totalChikenMetod();
    }
- 
    numberEighth(){
      this.numberEight = 8;
      console.log(this.numberEight)
      this.totalChikenMetod();
    }
- 
    numberNineth(){
      this.numberNine = 9;
      console.log(this.numberNine)
      this.totalChikenMetod();
    }
-   
    numberCeroth(){
      this.numberCero = 0;
      console.log(this.numberCero)
@@ -94,12 +89,11 @@ export class KeyboardComponent {
      this.numberEight = undefined;
      this.numberNine = undefined;
      this.numberTotal = this.concatenatedNumber;
-     console.log(this.numberTotal)
+     this.show = false;
     }
    }
 
    totalChikenMetod(){
-    
     if (this.numberOne != null) {
     this.concatenatedNumber += this.numberOne.toString() ;
     this.numberOne = undefined
@@ -140,9 +134,14 @@ export class KeyboardComponent {
       this.concatenatedNumber += this.numberCero.toString();
       this.numberCero = undefined
       }
-      
       this.numberTotal = this.concatenatedNumber;
       console.log(this.numberTotal);   
-    
 }
+  showKeyboard(show:any){
+    this.show = show;
+  }
+
+  ontotalNumberChange(value: number){
+    this.totalChange = value;
+  }
 }

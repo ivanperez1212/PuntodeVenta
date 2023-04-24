@@ -8,10 +8,11 @@ import { OperacionesService } from 'src/app/servicio/operaciones.service';
 })
 export class ListProductComponent {
   summaryDay:any;
-
+  showUpdate?:boolean;
   constructor(private service:OperacionesService){}
   
   ngOnInit(): void {
+    this.showUpdate = true;
     this.service.get().subscribe((res:any)=> {
       console.log(res);
       this.summaryDay = res;

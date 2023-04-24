@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button-product',
@@ -7,10 +7,16 @@ import { Component, ElementRef, Input } from '@angular/core';
 })
 export class ButtonProductComponent {
   @Input('productButton')productButton:string = "";
- 
+  showKey:boolean = false; 
+  @Output()show : EventEmitter<boolean> = new EventEmitter();
   constructor(){}
 
   ngOnInit(): void {
-    console.log(this.productButton)
+  }
+
+  showKeyboard(){
+  this.showKey = true;
+  this.show.emit(this.showKey);
+  console.log(this.showKey)
   }
 }

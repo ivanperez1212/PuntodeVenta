@@ -25,4 +25,140 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
+
+
+<div class="modal fade" #modalInfoChange tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" >
+       <div class="modal-body" >
+        <div class="row align-items-center justify-content-between">
+          <div class="col-9">
+          <h5 class="modal-title text-black" id="exampleModalLabel">Monto con el que paga</h5>
+          </div>
+        </div>
+        <div class="container p-5 bg-cover"  style="background-image: url('/assets/images/450_1000.jpg');">
+          <div class="row justify-content-between d-flex flex-wrap text-center mb-1 ">
+            <div class="col-3 col-md-3 d-flex align-items-center">
+              <div class="border p-4 bg-white ">M:{{numberTotalChange ? numberTotalChange : 0}} </div>
+            </div>
+            <div class="col-3 col-md-auto align-items-center"  >
+              <div class="card h-100 bs-info-border-subtle"> 
+                <div class="card-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-icon-only cursor-pointer touch-action: manipulation" (click)="numberFirst()">
+                    <h6 class="text-black">1</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 col-md-auto align-items-center" >
+              <div class="card h-100 bs-info-border-subtle">
+                <div class="card-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-icon-only cursor-pointer" (click)="numberSecond()">
+                    <h6 class="text-black">2</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 col-md-auto align-items-center" >
+              <div class="card h-100 bs-info-border-subtle">
+                <div class="card-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-icon-only cursor-pointer" (click)="numberThird()">
+                    <h6 class="text-black">3</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="row justify-content-between d-flex flex-wrap text-center mb-1" >
+            <div class="col-3 col-md-3 d-flex align-items-center">
+              <div class="border p-4 bg-white">D:{{numberTotal && numberTotalChange && price ? numberTotalChange - (numberTotal * price) : 0}}</div>
+            </div>
+            <div class="col-3 col-md-auto align-items-center">
+              <div class="card h-100 bs-info-border-subtle" >
+                <div class="card-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-icon-only cursor-pointer" (click)="numberFourth()">
+                    <h6 class="text-black">4</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 col-md-auto col-sm-1 align-items-center">
+              <div class="card  h-100 bs-info-border-subtle" >
+                <div class="card-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-icon-only cursor-pointer" (click)="numberFiveth()">
+                    <h6 class="text-black">5</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 col-md-auto align-items-center">
+              <div class="card h-100 bs-info-border-subtle" >
+                <div class="card-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-icon-only cursor-pointer" (click)="numberSixth()">
+                    <h6 class="text-black">6</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="row justify-content-between d-flex flex-wrap text-center mb-1" >
+            <div class="col-3 col-md-3 align-items-center">
+            </div>
+            <div class="col-3 col-md-auto  align-items-center">
+              <div class="card h-100 bs-info-border-subtle" >
+                <div class="card-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-icon-only cursor-pointer" (click)="numberSeventh()">
+                    <h6 class="text-black">7</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 col-md-auto align-items-center">
+              <div class="card h-100 bs-info-border-subtle" >
+                <div class="card-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-icon-only cursor-pointer" (click)="numberEighth()">
+                    <h6 class="text-black">8</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 col-md-auto align-items-center">
+              <div class="card h-100 bs-info-border-subtle" >
+                <div class="card-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-icon-only cursor-pointer" (click)="numberNineth()">
+                    <h6 class="text-black">9</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="row justify-content-between d-flex flex-wrap text-center mb-1 align-items-center" >
+            <div class="col-3 col-md-auto"></div>
+            <div class="col-3 col-md-auto align-items-center">
+              <div class="card h-100 bs-info-border-subtle" >
+                <div class="card-body d-flex justify-content-center">
+                  <button type="button" class="btn btn-icon-only cursor-pointer" (click)="numberCeroth()">
+                    <h6 class="text-black">0</h6>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 col-md-auto d-flex align-items-center">
+                <button class="btn btn-success d-block" (click)="handOutChange()">Es correcto</button>
+            </div>
+            <div class="col-3 col-md-auto d-flex align-items-center">
+              <button class="btn btn-danger d-block" (click)="handOutChangeCancel()">Es cancelar</button>
+           </div>
+          </div>
+        </div>
+       </div>
+      </div>
+    </div> 
+</div>
+
+
+

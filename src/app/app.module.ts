@@ -7,9 +7,11 @@ import { SharedModule } from './shared/shared/shared.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,

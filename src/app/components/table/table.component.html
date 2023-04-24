@@ -1,9 +1,12 @@
-    <table class="table">
+    <table class="table text-success" >
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Precio</th>
+            <th scope="col">Fecha</th>
+            <th *ngIf="showUpdate" scope="col">Editar</th>
+            <th *ngIf="showUpdate" scope="col">Eliminar</th>
             <th *ngIf="showTotal" scope="col">Total</th>
           </tr>
         </thead>
@@ -11,12 +14,16 @@
           <tr *ngFor="let product of summaryDay">
             <th scope="row">{{product.id}}</th>
             <td>{{product.name}}</td>
-            <td>{{product.price}}</td>     
+            <td>{{product.price}}</td>   
+            <td>{{product.date}}</td>  
+            <td *ngIf="showUpdate"><i class="fas fa-edit" (click)="update(product.id)"></i></td>
+            <td *ngIf="showUpdate"><i class="fas fa-trash" (click)="delete(product.id)"></i></td>
           </tr>
           <tr >
             <th scope="row"></th>
             <td></td>
             <td></td> 
+            <td></td>
             <td *ngIf="showTotal">{{ summaryDay | totalpipe }}</td>
           </tr>
         </tbody>

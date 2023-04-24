@@ -7,14 +7,14 @@ import { ModalConfirmationComponent } from 'src/app/components/modal-confirmatio
 import { TableComponent } from 'src/app/components/table/table.component';
 import { TotalpipePipe } from 'src/app/pipe/totalpipe.pipe';
 
+
 @NgModule({
   declarations: [
     ButtonProductComponent,
     KeyboardComponent,
     ModalConfirmationComponent,   
     TableComponent,
-    TotalpipePipe
-    
+    TotalpipePipe    
   ],
   imports: [
     CommonModule
@@ -24,7 +24,6 @@ import { TotalpipePipe } from 'src/app/pipe/totalpipe.pipe';
     KeyboardComponent,  
     ModalConfirmationComponent,
     TableComponent,
-    TotalpipePipe
-  ]
+    TotalpipePipe  ]
 })
 export class SharedModule { }

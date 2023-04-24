@@ -23,6 +23,14 @@ const routes: Routes = [
       {
         path:'summary-day',
         loadChildren: () => import('./pages/summary-day/summary-day.module').then(m => m.SummaryDayModule)
+      },
+      {
+        path:'update-product/:id',
+        loadChildren: () => import('./pages/update-product/update-product.module').then(m => m.UpdateProductModule)
+      },
+      {
+       path:'insert-product',
+       loadChildren: () => import('./pages/insert-product/insert-product.module').then(m =>m.InsertProductModule)
       }
     ]
   }
