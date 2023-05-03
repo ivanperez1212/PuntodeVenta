@@ -22,7 +22,7 @@ constructor(private fb: FormBuilder,
 ngOnInit(): void {
  this.id = this.route.snapshot.paramMap.get('id');
 
- this.service.getId(this.id!).subscribe((res:Product | undefined) => {
+ this.service.get("products",this.id).subscribe((res:Product | undefined) => {
   this.myForm.patchValue(res!)
   this.id = parseInt(this.id);
   console.log(typeof(this.id));

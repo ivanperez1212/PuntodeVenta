@@ -16,7 +16,7 @@ export class SummaryDayComponent {
   }
 
   dayTotal(){
-    this.service.get().subscribe((res:any) => {
+    this.service.get("products").subscribe((res:any) => {
      this.summaryDay = res;
     })
   }

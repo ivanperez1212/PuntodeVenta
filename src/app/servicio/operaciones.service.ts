@@ -1,5 +1,5 @@
 import {  Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, toArray } from 'rxjs';
 import { Product } from '../interfaces/product';
 
 @Injectable({
@@ -32,8 +32,23 @@ export class OperacionesService {
     return of(list)
    }
 
-  
-   
+   postTotal(key:string,params:any = undefined){
+    console.log(params)
+    var total = JSON.parse(localStorage.getItem(key) || "[]");
+    
+    if (total.length > 0) {
+      // Si el array tiene elementos, actualizar el valor total de la propiedad
+      total[0].total = params;
+      localStorage.setItem(key, JSON.stringify(total));
+      console.log(total);
+      return of(total);
+    } else {
+      // Si el array está vacío, o no tiene elementos con índice 0, devolver un error o un valor predeterminado
+      console.log("El array está vacío o no tiene elementos con índice 0");
+      return of(null);
+    }
+   }   
+
    post(product:Product){
   
     var idProduct =  JSON.parse(localStorage.getItem("idProduct") || "[]");
@@ -55,21 +70,17 @@ export class OperacionesService {
      return of(tableProducts)
    }
 
-   get(){
-    var tableProduct = JSON.parse(localStorage.getItem("products") || "[]");
-    return of(tableProduct)
+  get(key:string, params:any = undefined):Observable<any>{
+    var tableProduct = JSON.parse(localStorage.getItem(key) || "[]");
+    if(params){
+      const product = tableProduct.find((res: Product) => res.id === Number(params));
+      return of(product);
+    }else{
+      return of(tableProduct)
+    }
    }
 
-   getProduct(){
-    var tableProduct = JSON.parse(localStorage.getItem("listProducts") || "[]");
-    return of(tableProduct)
-   }
 
-   getId(id:string): Observable<Product | undefined>{
-    const tableProduct = JSON.parse(localStorage.getItem('products') || "[]");
-    const product = tableProduct.find((res: Product) => res.id === Number(id));
-    return of(product);
-   }
    update(product: Product, newProduct: Product):Observable<Product | undefined> {
     var tablaProduct = JSON.parse(localStorage.getItem("products") || "[]");
     let index = tablaProduct.findIndex((res: { id: any; }) => res.id === newProduct);
@@ -99,5 +110,7 @@ export class OperacionesService {
       } 
       return of(idProduct);
    }
+
+   
 
 } 

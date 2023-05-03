@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-keyboard',
@@ -8,6 +8,8 @@ import { Component, Input } from '@angular/core';
 export class KeyboardComponent {
   @Input('productButton')productButton:string = "";
   @Input('price')price:number = 0;
+  @Output() numberTotalEmit: EventEmitter<any> = new EventEmitter();
+  @Output()priceEmit: EventEmitter<any> = new EventEmitter();
   numberOne:any; 
   numberTwo:any;
   numberThree:any;
@@ -18,14 +20,18 @@ export class KeyboardComponent {
   numberEight:any;
   numberNine:any;
   numberCero:any;
+  numberHaft:any;
   numberTotal:any;
   concatenatedNumber: any ="";
   emptyBox: boolean = false;
   show: boolean = false;
-  totalChange: number = 0;
 
   constructor(){}
 
+
+  showKeyboard(show:any){
+    this.show = show;
+  }
   numberFirst(){
     this.numberOne = 1;
     console.log(this.numberOne)
@@ -76,6 +82,11 @@ export class KeyboardComponent {
      console.log(this.numberCero)
      this.totalChikenMetod();
    }
+   numberHaftth(){
+    this.numberHaft = .5;
+    console.log(this.numberHaft)
+    this.totalChikenMetod();
+   }
 
    onEmptyBox(emptyBox: any){
     if(emptyBox == true ){
@@ -88,6 +99,8 @@ export class KeyboardComponent {
      this.numberSeven = undefined;
      this.numberEight = undefined;
      this.numberNine = undefined;
+     this.numberCero = undefined;
+     this.numberHaft = undefined;
      this.numberTotal = this.concatenatedNumber;
      this.show = false;
     }
@@ -133,15 +146,26 @@ export class KeyboardComponent {
     if (this.numberCero != null) {
       this.concatenatedNumber += this.numberCero.toString();
       this.numberCero = undefined
+    }
+    if (this.numberHaft != null) {
+      this.concatenatedNumber = parseInt(this.concatenatedNumber)
+      if(this.concatenatedNumber){
+        this.concatenatedNumber += this.numberHaft;
+        this.numberHaft = undefined
+      }else
+      {
+        this.concatenatedNumber = this.numberHaft;
       }
+    
+    }
       this.numberTotal = this.concatenatedNumber;
       console.log(this.numberTotal);   
 }
-  showKeyboard(show:any){
-    this.show = show;
-  }
 
-  ontotalNumberChange(value: number){
-    this.totalChange = value;
-  }
+ontotalNumberEmit(value:any){
+ this.numberTotalEmit.emit(value);
+}
+onpriceEmit(value:any){
+this.priceEmit.emit(value);
+}
 }

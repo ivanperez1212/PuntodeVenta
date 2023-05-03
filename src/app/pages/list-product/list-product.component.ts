@@ -13,7 +13,7 @@ export class ListProductComponent {
   
   ngOnInit(): void {
     this.showUpdate = true;
-    this.service.get().subscribe((res:any)=> {
+    this.service.get("products").subscribe((res:any)=> {
       console.log(res);
       this.summaryDay = res;
     })
